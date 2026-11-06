@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joan Gueffroy — Fullstack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --dk: #0e0e0e;
+    --dk2: #181818;
+    --dk3: #222222;
+    --dk-border: #2e2e2e;
+    --dk-border2: #3c3c3c;
+    --on-dk: #f0f0f0;
+    --on-dk2: #999999;
+    --on-dk3: #5a5a5a;
+    --lt: #ededed;
+    --lt2: #e4e4e4;
+    --lt3: #d8d8d8;
+    --lt-border: #cccccc;
+    --on-lt: #1a1a1a;
+    --on-lt2: #5a5a5a;
+    --on-lt3: #999999;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+    background: var(--dk);
+    color: var(--on-dk);
+    -webkit-font-smoothing: antialiased;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: 60px;
+    background: rgba(14, 14, 14, 0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--dk-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 56px;
+}
+
+.nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: var(--on-dk);
+    letter-spacing: 0.01em;
+}
+
+.nav-brand em {
+    font-style: normal;
+    color: var(--on-dk2);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 34px;
+}
+
+.nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--on-dk2);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.18s;
+}
+
+.nav-links a:hover {
+    color: var(--on-dk);
+}
+
+.hero {
+    min-height: 100vh;
+    background: var(--dk);
+    padding: 60px 56px 80px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg-text {
+    position: absolute;
+    right: -20px;
+    bottom: -60px;
+    font-family: 'Playfair Display', serif;
+    font-size: 280px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.025);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.04em;
+}
+
+.hero-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    padding-top: 40px;
+}
+
+.hero-photo-wrap {
+    flex-shrink: 0;
+    position: relative;
+}
+
+.hero-photo {
+    width: 248px;
+    height: 248px;
+    object-fit: cover;
+    object-position: 50% 50%;
+    display: block;
+    border-radius: 4px;
+    filter: grayscale(30%) brightness(0.92);
+    border: 1px solid var(--dk-border2);
+}
+
+.hero-photo-frame {
+    width: 248px;
+    height: 248px;
+    border-radius: 4px;
+    background: var(--dk3);
+    border: 1px solid var(--dk-border2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--on-dk3);
+    font-size: 64px;
+}
+
+.hero-photo-label {
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--on-dk3);
+}
+
+.hero-copy {
+    flex: 1;
+}
+
+.hero-eyebrow {
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--on-dk2);
+    font-weight: 500;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hero-eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--on-dk3);
+    display: block;
+}
+
+.hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 66px;
+    font-weight: 400;
+    line-height: 1.05;
+    color: var(--on-dk);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+}
+
+.hero-name-rule {
+    width: 100%;
+    height: 1px;
+    background: var(--dk-border2);
+    margin: 18px 0 18px;
+}
+
+.hero-title {
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--on-dk2);
+    letter-spacing: 0.02em;
+    margin-bottom: 28px;
+}
+
+.hero-desc {
+    font-size: 15px;
+    color: var(--on-dk2);
+    line-height: 1.85;
+    max-width: 580px;
+    margin-bottom: 36px;
+}
+
+.hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.chip {
+    font-size: 12px;
+    padding: 5px 14px;
+    border: 1px solid var(--dk-border2);
+    border-radius: 2px;
+    color: var(--on-dk3);
+    letter-spacing: 0.03em;
+    background: var(--dk2);
+}
+
+.hero-actions {
+    display: flex;
+    gap: 14px;
+}
+
+.btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 12px 28px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.18s;
+    cursor: pointer;
+    border: 1px solid transparent;
+    display: inline-block;
+}
+
+.btn-white {
+    background: var(--on-dk);
+    color: var(--dk);
+    border-color: var(--on-dk);
+}
+
+.btn-white:hover {
+    background: #d0d0d0;
+    border-color: #d0d0d0;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--on-dk2);
+    border-color: var(--dk-border2);
+}
+
+.btn-outline:hover {
+    border-color: var(--on-dk3);
+    color: var(--on-dk);
+}
+
+section.light {
+    background: var(--lt);
+    color: var(--on-lt);
+}
+
+section.dark {
+    background: var(--dk);
+    color: var(--on-dk);
+}
+
+.sec {
+    padding: 96px 56px;
+}
+
+.sec-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+}
+
+.sec-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.dark .sec-eyebrow { color: var(--on-dk3); }
+.light .sec-eyebrow { color: var(--on-lt3); }
+
+.sec-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 48px;
+}
+
+.dark .sec-title { color: var(--on-dk); }
+.light .sec-title { color: var(--on-lt); }
+
+.sec-rule {
+    width: 40px;
+    height: 1px;
+    margin-bottom: 48px;
+    margin-top: -36px;
+}
+
+.dark .sec-rule { background: var(--dk-border2); }
+.light .sec-rule { background: var(--lt-border); }
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 80px;
+}
+
+.about-body p {
+    margin-bottom: 18px;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.light .about-body p { color: var(--on-lt2); }
+.dark .about-body p { color: var(--on-dk2); }
+
+.about-personal {
+    margin-top: 36px;
+    padding-top: 32px;
+    border-top: 1px solid var(--lt-border);
+}
+
+.about-personal h4 {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--on-lt3);
+    margin-bottom: 20px;
+}
+
+.plist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.plist li {
+    display: flex;
+    gap: 0;
+    font-size: 13.5px;
+}
+
+.plist .k {
+    width: 108px;
+    flex-shrink: 0;
+    color: var(--on-lt3);
+    font-weight: 500;
+    font-size: 12.5px;
+    letter-spacing: 0.01em;
+}
+
+.plist .v {
+    color: var(--on-lt2);
+}
+
+.plist a {
+    color: var(--on-lt2);
+    text-decoration: none;
+}
+
+.plist a:hover {
+    color: var(--on-lt);
+}
+
+.about-side {}
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-bottom: 40px;
+}
+
+.stat-block {
+    background: var(--lt2);
+    padding: 30px 22px;
+    text-align: center;
+}
+
+.stat-n {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 400;
+    color: var(--on-lt);
+    display: block;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.stat-l {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--on-lt3);
+}
+
+.about-quote {
+    background: var(--lt2);
+    padding: 28px 26px;
+    border-left: 3px solid var(--lt3);
+}
+
+.about-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--on-lt2);
+    line-height: 1.7;
+    font-style: italic;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--dk-border);
+}
+
+.skill-card {
+    background: var(--dk2);
+    padding: 32px 28px;
+}
+
+.skill-card-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--on-dk3);
+    margin-bottom: 14px;
+}
+
+.skill-card-desc {
+    font-size: 13.5px;
+    color: var(--on-dk3);
+    line-height: 1.75;
+    margin-bottom: 20px;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.stag {
+    font-size: 12px;
+    padding: 4px 11px;
+    background: var(--dk3);
+    border: 1px solid var(--dk-border2);
+    border-radius: 2px;
+    color: var(--on-dk2);
+    letter-spacing: 0.01em;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 36px;
+    border-left: 1px solid var(--lt-border);
+}
+
+.tl-item {
+    position: relative;
+    margin-bottom: 54px;
+}
+
+.tl-item:last-child {
+    margin-bottom: 0;
+}
+
+.tl-dot {
+    position: absolute;
+    left: -40px;
+    top: 5px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--on-lt3);
+    border: 2px solid var(--lt);
+}
+
+.tl-period {
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--on-lt3);
+    margin-bottom: 8px;
+}
+
+.tl-role {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--on-lt);
+    letter-spacing: -0.01em;
+    margin-bottom: 3px;
+}
+
+.tl-company {
+    font-size: 13.5px;
+    color: var(--on-lt3);
+    margin-bottom: 16px;
+    letter-spacing: 0.01em;
+}
+
+.tl-desc {
+    font-size: 14px;
+    color: var(--on-lt2);
+    line-height: 1.85;
+    max-width: 740px;
+    margin-bottom: 16px;
+}
+
+.tl-techs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.tch {
+    font-size: 11.5px;
+    padding: 3px 10px;
+    background: var(--lt2);
+    border: 1px solid var(--lt-border);
+    border-radius: 2px;
+    color: var(--on-lt3);
+    letter-spacing: 0.02em;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--dk-border);
+}
+
+.proj-card {
+    background: var(--dk2);
+    padding: 40px 36px;
+    transition: background 0.2s;
+}
+
+.proj-card:hover {
+    background: var(--dk3);
+}
+
+.proj-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 400;
+    color: var(--dk-border2);
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.proj-name {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--on-dk);
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+}
+
+.proj-desc {
+    font-size: 14px;
+    color: var(--on-dk2);
+    line-height: 1.85;
+    margin-bottom: 22px;
+}
+
+.proj-techs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.contact-split {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 72px;
+    align-items: start;
+}
+
+.contact-intro {
+    font-size: 15px;
+    color: var(--on-lt2);
+    line-height: 1.9;
+    margin-bottom: 36px;
+}
+
+.cinfo {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-bottom: 40px;
+}
+
+.cinfo-item {}
+
+.cinfo-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--on-lt3);
+    margin-bottom: 4px;
+}
+
+.cinfo-value {
+    font-size: 15px;
+    color: var(--on-lt);
+}
+
+.cinfo-value a {
+    color: var(--on-lt);
+    text-decoration: none;
+    transition: color 0.18s;
+}
+
+.cinfo-value a:hover {
+    color: var(--on-lt2);
+}
+
+.map-box {
+    position: relative;
+    height: 360px;
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid var(--lt-border);
+    cursor: pointer;
+}
+
+.map-box iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    pointer-events: none;
+    filter: grayscale(100%) brightness(0.9) contrast(1.05);
+    display: block;
+}
+
+.map-click-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: transparent;
+}
+
+.map-pin-label {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    z-index: 3;
+    background: var(--on-lt);
+    color: var(--lt);
+    border-radius: 2px;
+    padding: 10px 14px;
+    pointer-events: none;
+}
+
+.map-pin-label strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.map-pin-label span {
+    font-size: 11.5px;
+    color: #aaa;
+}
+
+footer {
+    background: var(--dk);
+    border-top: 1px solid var(--dk-border);
+    padding: 32px 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer-copy {
+    font-size: 13px;
+    color: var(--on-dk3);
+}
+
+.footer-nav {
+    list-style: none;
+    display: flex;
+    gap: 26px;
+}
+
+.footer-nav a {
+    font-size: 12.5px;
+    color: var(--on-dk3);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.18s;
+}
+
+.footer-nav a:hover {
+    color: var(--on-dk2);
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--dk); }
+::-webkit-scrollbar-thumb { background: var(--dk-border2); border-radius: 2px; }
+
+@media (max-width: 860px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 80px 24px 60px; }
+    .hero-inner { flex-direction: column; gap: 40px; text-align: left; }
+    .hero-name { font-size: 46px; }
+    .sec { padding: 70px 24px; }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .contact-split { grid-template-columns: 1fr; gap: 48px; }
+    footer { flex-direction: column; gap: 14px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-brand">Joan <em>Gueffroy</em></div>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="dark" style="padding: 0;" id="home">
+    <div class="hero">
+        <div class="hero-bg-text">JG</div>
+        <div class="hero-inner">
+            <div class="hero-photo-wrap">
+                <img
+                    src="profile.png"
+                    alt="Joan Gueffroy"
+                    class="hero-photo"
+                    onerror="this.style.display='none';document.getElementById('pf').style.display='flex';"
+                >
+                <div class="hero-photo-frame" id="pf" style="display:none;">
+                    <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="36" cy="28" r="14" stroke="#3c3c3c" stroke-width="2" fill="none"/>
+                        <path d="M8 64c0-15.464 12.536-28 28-28s28 12.536 28 28" stroke="#3c3c3c" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+                <p class="hero-photo-label">Butiá, Brazil</p>
+            </div>
+            <div class="hero-copy">
+                <p class="hero-eyebrow">Fullstack Developer</p>
+                <h1 class="hero-name">Joan<br>Gueffroy</h1>
+                <div class="hero-name-rule"></div>
+                <p class="hero-title">Shipping complete web products — UI, API, data, and deploy</p>
+                <p class="hero-desc">I build fullstack web applications from the first interface through the database and production release. On the frontend I work with React, Next.js, Vue, and TypeScript to ship fast, accessible interfaces. On the backend I design REST and GraphQL APIs in Node.js, Python, and PHP, with PostgreSQL, Redis, and Docker in production. I take features from idea to a running system that other developers can maintain.</p>
+                <div class="hero-chips">
+                    <span class="chip">Fullstack</span>
+                    <span class="chip">React / Node.js</span>
+                    <span class="chip">APIs &amp; Databases</span>
+                    <span class="chip">Butiá, Brazil</span>
+                    <span class="chip">Remote-Ready</span>
+                    <span class="chip">Open to New Roles</span>
+                </div>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-white">Get in Touch</a>
+                    <a href="#experience" class="btn btn-outline">View Experience</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="light sec" id="about">
+    <div class="sec-inner">
+        <p class="sec-eyebrow">About Me</p>
+        <h2 class="sec-title">Fullstack Developer.<br>Frontend, Backend, Production.</h2>
+        <div class="sec-rule"></div>
+        <div class="about-grid">
+            <div class="about-body">
+                <p>My name is Joan Gueffroy. I am a fullstack web developer based in Butiá, Brazil. I design and ship complete products: the interface people use, the APIs and services behind it, the data layer, and the deployment that keeps it running. I started in 2004 writing PHP and HTML at a small software house, and I have spent the years since working across the stack — not only on one layer of the application.</p>
+                <p>A typical project for me covers both sides of the product. I build component-based frontends in React, Next.js, or Vue, then connect them to Node.js, Django, Laravel, or Spring Boot services. I model data in PostgreSQL or MySQL, add caching with Redis when it matters, and containerise the result so it can be deployed with CI/CD. I care about how the code reads to the next developer and how the product feels to the person using it.</p>
+                <p>I have worked in agencies, product teams, and as an embedded contractor. Agencies taught me to move quickly and talk clearly with clients. Product work taught me ownership of a feature from ticket to production. Larger systems taught me how to keep a codebase maintainable as traffic and team size grow. I still write production code every week — architecture and reviews sit on top of that, not instead of it.</p>
+                <p>Most recently I have been the lead fullstack engineer on a multi-tenant SaaS platform: React on the client, Node.js microservices and PostgreSQL on the server, Docker and AWS in production. I work remotely from Brazil and take on selected consulting engagements when the problem is a good fit. I am open to fullstack roles that need someone who can own a feature end to end.</p>
+                <p>Away from the keyboard I read, photograph urban landscapes, and mentor junior developers. Teaching someone how a request travels from a button click through an API into a database — and back — is still one of the most useful things I do.</p>
+                <div class="about-personal">
+                    <h4>Personal Details</h4>
+                    <ul class="plist">
+                        <li><span class="k">Full Name</span><span class="v">Joan Gueffroy</span></li>
+                        <li><span class="k">Date of Birth</span><span class="v">05 June 1981</span></li>
+                        <li><span class="k">Location</span><span class="v">R. Honorio Luiz Francisco, 178 - Centro, Butiá, 96750-000, BR</span></li>
+                        <li><span class="k">Phone</span><span class="v"><a href="tel:+5522920148407">+55 22 9201-48407</a></span></li>
+                        <li><span class="k">Email</span><span class="v"><a href="mailto:joangueffroy@gmail.com">joangueffroy@gmail.com</a></span></li>
+                        <li><span class="k">Languages</span><span class="v">Portuguese (Native), English (Fluent)</span></li>
+                        <li><span class="k">Availability</span><span class="v">Open to remote and on-site opportunities</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="about-side">
+                <div class="stat-grid">
+                    <div class="stat-block">
+                        <span class="stat-n">20+</span>
+                        <span class="stat-l">Years Active</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-n">85+</span>
+                        <span class="stat-l">Projects Done</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-n">40+</span>
+                        <span class="stat-l">Clients Served</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-n">12</span>
+                        <span class="stat-l">Core Technologies</span>
+                    </div>
+                </div>
+                <div class="about-quote">
+                    <p>"A fullstack feature is not finished when the UI looks right or the API returns 200. It is finished when the whole path — browser, server, data, and deploy — is something the next developer can change with confidence."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="dark sec" id="skills">
+    <div class="sec-inner">
+        <p class="sec-eyebrow">Technical Expertise</p>
+        <h2 class="sec-title">Skills &amp; Technologies</h2>
+        <div class="sec-rule"></div>
+        <div class="skills-grid">
+
+            <div class="skill-card">
+                <p class="skill-card-label">Frontend Development</p>
+                <p class="skill-card-desc">Building the client side of fullstack products: responsive, accessible interfaces in React, Next.js, and Vue, wired to real APIs, with component architecture that stays consistent across devices.</p>
+                <div class="skill-tags">
+                    <span class="stag">HTML5</span>
+                    <span class="stag">CSS3 / Sass</span>
+                    <span class="stag">JavaScript (ES2022+)</span>
+                    <span class="stag">TypeScript</span>
+                    <span class="stag">React</span>
+                    <span class="stag">Next.js</span>
+                    <span class="stag">Vue.js</span>
+                    <span class="stag">Nuxt.js</span>
+                    <span class="stag">Angular</span>
+                    <span class="stag">Tailwind CSS</span>
+                    <span class="stag">Webpack / Vite</span>
+                    <span class="stag">Storybook</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <p class="skill-card-label">Backend Development</p>
+                <p class="skill-card-desc">Designing the other half of the stack: REST and GraphQL APIs, auth, business logic, and background jobs in Node.js, Python, PHP, and Java — the services a frontend actually depends on.</p>
+                <div class="skill-tags">
+                    <span class="stag">Node.js</span>
+                    <span class="stag">Express.js</span>
+                    <span class="stag">Python</span>
+                    <span class="stag">Django</span>
+                    <span class="stag">FastAPI</span>
+                    <span class="stag">PHP</span>
+                    <span class="stag">Laravel</span>
+                    <span class="stag">Java</span>
+                    <span class="stag">Spring Boot</span>
+                    <span class="stag">RESTful APIs</span>
+                    <span class="stag">GraphQL</span>
+                    <span class="stag">WebSockets</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <p class="skill-card-label">Databases &amp; Storage</p>
+                <p class="skill-card-desc">Designing and optimising relational and non-relational data models, with hands-on experience in query tuning, indexing strategies, and managing data at meaningful scale in production systems.</p>
+                <div class="skill-tags">
+                    <span class="stag">PostgreSQL</span>
+                    <span class="stag">MySQL</span>
+                    <span class="stag">MongoDB</span>
+                    <span class="stag">Redis</span>
+                    <span class="stag">Elasticsearch</span>
+                    <span class="stag">SQLite</span>
+                    <span class="stag">Firebase</span>
+                    <span class="stag">Supabase</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <p class="skill-card-label">DevOps &amp; Cloud Infrastructure</p>
+                <p class="skill-card-desc">Managing containerised deployments, CI/CD pipelines, and cloud infrastructure to ensure systems remain stable, observable, and straightforward to scale as traffic and team size grow.</p>
+                <div class="skill-tags">
+                    <span class="stag">Docker</span>
+                    <span class="stag">Kubernetes</span>
+                    <span class="stag">AWS</span>
+                    <span class="stag">Google Cloud Platform</span>
+                    <span class="stag">Microsoft Azure</span>
+                    <span class="stag">GitHub Actions</span>
+                    <span class="stag">GitLab CI</span>
+                    <span class="stag">Nginx</span>
+                    <span class="stag">Linux / Ubuntu</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <p class="skill-card-label">Testing &amp; Quality</p>
+                <p class="skill-card-desc">Applying a pragmatic testing philosophy across unit, integration, and end-to-end layers — making sure that the code shipped to production is the code that was actually intended, and that regressions are caught early rather than late.</p>
+                <div class="skill-tags">
+                    <span class="stag">Jest</span>
+                    <span class="stag">Vitest</span>
+                    <span class="stag">Cypress</span>
+                    <span class="stag">Playwright</span>
+                    <span class="stag">React Testing Library</span>
+                    <span class="stag">Postman</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <p class="skill-card-label">Architecture &amp; Leadership</p>
+                <p class="skill-card-desc">Drawing on two decades in the field to guide technical strategy, lead code reviews, mentor engineers at all levels, and design systems that remain flexible as both the product and the team continue to evolve.</p>
+                <div class="skill-tags">
+                    <span class="stag">Microservices</span>
+                    <span class="stag">System Design</span>
+                    <span class="stag">API Design</span>
+                    <span class="stag">Code Review</span>
+                    <span class="stag">Agile / Scrum</span>
+                    <span class="stag">Team Mentoring</span>
+                    <span class="stag">Technical Writing</span>
+                    <span class="stag">Figma</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="light sec" id="experience">
+    <div class="sec-inner">
+        <p class="sec-eyebrow">Work History</p>
+        <h2 class="sec-title">Professional Experience</h2>
+        <div class="sec-rule"></div>
+        <div class="timeline">
+
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <p class="tl-period">2020 — Present</p>
+                <p class="tl-role">Lead Fullstack Developer</p>
+                <p class="tl-company">TechFlow Solutions &mdash; Remote</p>
+                <p class="tl-desc">Lead fullstack engineer on a distributed team of twelve, owning both the React client and the Node.js services behind a multi-tenant SaaS platform used by more than three hundred enterprise clients. Day to day I still ship features end to end: TypeScript UI, GraphQL and REST APIs, PostgreSQL schema changes, Redis caching, and Docker/Kubernetes releases on AWS. I introduced a shared React design system that cut time-to-feature by about 35 percent, and I led the migration of a legacy PHP monolith into independently deployable Node.js services. That work improved uptime, lowered infrastructure cost, and made the stack easier to extend. I also mentor mid-level engineers on how to take a ticket from UI through API to production.</p>
+                <div class="tl-techs">
+                    <span class="tch">React</span>
+                    <span class="tch">TypeScript</span>
+                    <span class="tch">Node.js</span>
+                    <span class="tch">PostgreSQL</span>
+                    <span class="tch">Redis</span>
+                    <span class="tch">Docker</span>
+                    <span class="tch">Kubernetes</span>
+                    <span class="tch">AWS</span>
+                    <span class="tch">GraphQL</span>
+                </div>
+            </div>
+
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <p class="tl-period">2015 — 2020</p>
+                <p class="tl-role">Senior Software Engineer</p>
+                <p class="tl-company">DigitalCraft Agency &mdash; Warszawa, Poland</p>
+                <p class="tl-desc">Senior fullstack engineer at a boutique product studio, delivering client work across e-commerce, media, healthcare, and financial services. I was often the person who took a brief from discovery through a working Vue.js frontend, Laravel or Django API, MySQL data model, and Nginx/Docker deploy. One of the larger projects was a media portal with over two million unique monthly visitors: frontend performance work, Redis caching, image pipelines, and a zero-downtime migration. I also brought automated tests into the agency's delivery process so releases were no longer a purely manual check.</p>
+                <div class="tl-techs">
+                    <span class="tch">Vue.js</span>
+                    <span class="tch">Laravel</span>
+                    <span class="tch">Python</span>
+                    <span class="tch">Django</span>
+                    <span class="tch">MySQL</span>
+                    <span class="tch">Redis</span>
+                    <span class="tch">Docker</span>
+                    <span class="tch">Nginx</span>
+                </div>
+            </div>
+
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <p class="tl-period">2011 — 2015</p>
+                <p class="tl-role">Fullstack Web Developer</p>
+                <p class="tl-company">WebMatrix Ltd. &mdash; Kraków, Poland</p>
+                <p class="tl-desc">This is where I became a fullstack developer rather than a frontend specialist. I kept shipping interfaces in JavaScript and jQuery, and I added database schemas, REST APIs, PHP services, and Linux server setup. Most projects were custom internal tools or client-facing platforms, and I stayed with them from first screen to production. I also started leading smaller builds: estimating honestly, explaining trade-offs to non-technical stakeholders, and choosing structures the rest of the team had to live with.</p>
+                <div class="tl-techs">
+                    <span class="tch">JavaScript</span>
+                    <span class="tch">jQuery</span>
+                    <span class="tch">PHP</span>
+                    <span class="tch">MySQL</span>
+                    <span class="tch">Bootstrap</span>
+                    <span class="tch">Linux</span>
+                </div>
+            </div>
+
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <p class="tl-period">2007 — 2011</p>
+                <p class="tl-role">Frontend Developer</p>
+                <p class="tl-company">NetSpark Studios &mdash; Warszawa, Poland</p>
+                <p class="tl-desc">My first dedicated frontend role, at a fast-moving Warsaw web agency that served clients in retail, entertainment, and consumer services. I built marketing websites, interactive landing pages, and CMS-driven content portals — often several in parallel — and in doing so I developed the habits that still define how I write code today: clarity over cleverness, semantic structure, and thinking about the developer who will inherit the work. The agency environment also taught me how to manage client expectations, communicate progress in plain language, and stay effective under deadline pressure. This was also the period in which mobile web usage began to grow seriously, and I developed an early interest in performance optimisation and progressive enhancement that has stayed with me throughout my career.</p>
+                <div class="tl-techs">
+                    <span class="tch">HTML</span>
+                    <span class="tch">CSS</span>
+                    <span class="tch">JavaScript</span>
+                    <span class="tch">jQuery</span>
+                    <span class="tch">WordPress</span>
+                    <span class="tch">Photoshop</span>
+                </div>
+            </div>
+
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <p class="tl-period">2004 — 2007</p>
+                <p class="tl-role">Junior Web Developer</p>
+                <p class="tl-company">CodeBase Systems &mdash; Warszawa, Poland</p>
+                <p class="tl-desc">My professional career began here, directly following graduation. CodeBase was a small Warsaw software house building internal business applications and simple web portals for local clients. Working under close mentorship, I learned the fundamentals that I still consider the bedrock of good engineering: clean version control habits, thorough documentation, realistic estimation, and the value of asking questions rather than guessing. The technology we used was modest by today's standards, but the discipline instilled in me during those three years has been useful every single day since. It is also where I first understood that software development is fundamentally a collaborative and communicative activity — not a solitary exercise in writing code.</p>
+                <div class="tl-techs">
+                    <span class="tch">HTML</span>
+                    <span class="tch">CSS</span>
+                    <span class="tch">PHP</span>
+                    <span class="tch">MySQL</span>
+                    <span class="tch">Apache</span>
+                    <span class="tch">SVN</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="dark sec" id="projects">
+    <div class="sec-inner">
+        <p class="sec-eyebrow">Selected Work</p>
+        <h2 class="sec-title">Projects</h2>
+        <div class="sec-rule"></div>
+        <div class="projects-grid">
+
+            <div class="proj-card">
+                <p class="proj-num">01</p>
+                <p class="proj-name">EcommerceCore Platform</p>
+                <p class="proj-desc">A fullstack multi-vendor e-commerce platform for a European retail group across seven markets. I built the Next.js storefront, the Node.js APIs for orders and inventory, real-time notifications, and the vendor back-office. Checkout was the hardest path — UI state, payment APIs, and stock writes had to stay in sync under load — and conversion improved after launch. The stack ran in Docker on AWS with blue-green releases.</p>
+                <div class="proj-techs">
+                    <span class="stag">Next.js</span>
+                    <span class="stag">Node.js</span>
+                    <span class="stag">PostgreSQL</span>
+                    <span class="stag">Redis</span>
+                    <span class="stag">Docker</span>
+                    <span class="stag">AWS</span>
+                </div>
+            </div>
+
+            <div class="proj-card">
+                <p class="proj-num">02</p>
+                <p class="proj-name">FinanceTrack Dashboard</p>
+                <p class="proj-desc">An internal analytics and reporting platform developed for a Warsaw-based financial advisory firm, giving their analysts real-time visibility into portfolio performance, client metrics, risk indicators, and regulatory compliance status. The frontend was built in Vue.js with a suite of custom interactive data visualisation components. The backend aggregated live data from multiple third-party financial data APIs through a secure Python service layer with robust retry and fallback logic. The project required strict adherence to GDPR and financial data handling regulations, role-based access control with detailed audit logging, and SSO integration with the client's existing identity provider.</p>
+                <div class="proj-techs">
+                    <span class="stag">Vue.js</span>
+                    <span class="stag">Python</span>
+                    <span class="stag">FastAPI</span>
+                    <span class="stag">PostgreSQL</span>
+                    <span class="stag">Docker</span>
+                    <span class="stag">Azure</span>
+                </div>
+            </div>
+
+            <div class="proj-card">
+                <p class="proj-num">03</p>
+                <p class="proj-name">SmartConnect IoT Portal</p>
+                <p class="proj-desc">A browser-based management portal for an IoT hardware company, allowing their clients to monitor the status of thousands of connected devices, configure alert thresholds, view historical sensor data, and manage firmware update schedules. The platform processes several thousand data points per minute and uses persistent WebSocket connections to push live updates into the interface without requiring a page refresh. The backend was built in Node.js, with a time-series-optimised storage layer to handle the volume and velocity of device telemetry. The project also involved a mobile-first responsive redesign, since field engineers needed to use the portal on tablets in industrial environments.</p>
+                <div class="proj-techs">
+                    <span class="stag">React</span>
+                    <span class="stag">Node.js</span>
+                    <span class="stag">WebSockets</span>
+                    <span class="stag">MongoDB</span>
+                    <span class="stag">Kubernetes</span>
+                    <span class="stag">GCP</span>
+                </div>
+            </div>
+
+            <div class="proj-card">
+                <p class="proj-num">04</p>
+                <p class="proj-name">CloudNest File Management System</p>
+                <p class="proj-desc">A secure, self-hosted file management and collaboration application built for a Warsaw law firm that required an on-premises alternative to commercial cloud storage services due to client data confidentiality requirements. The system supports drag-and-drop uploads of files up to several gigabytes, folder hierarchies, granular per-user and per-folder sharing permissions, full-text document search via Elasticsearch, version history, and a complete audit trail of all access and modification events. Security was a primary concern throughout: the implementation includes end-to-end encryption at rest, two-factor authentication, session management, and detailed access logs reviewed by the firm's compliance team monthly.</p>
+                <div class="proj-techs">
+                    <span class="stag">React</span>
+                    <span class="stag">Django</span>
+                    <span class="stag">Elasticsearch</span>
+                    <span class="stag">PostgreSQL</span>
+                    <span class="stag">Docker</span>
+                    <span class="stag">Nginx</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="light sec" id="contact">
+    <div class="sec-inner">
+        <p class="sec-eyebrow">Get in Touch</p>
+        <h2 class="sec-title">Contact</h2>
+        <div class="sec-rule"></div>
+        <div class="contact-split">
+            <div>
+                <p class="contact-intro">I am open to fullstack roles — remote or on-site — including long-term contracts, full-time positions, and focused product builds. If you need someone who can own a feature from the UI through the API, database, and deploy, I would be glad to hear from you. I aim to respond within one business day.</p>
+                <div class="cinfo">
+                    <div class="cinfo-item">
+                        <p class="cinfo-label">Full Name</p>
+                        <p class="cinfo-value">Joan Gueffroy</p>
+                    </div>
+                    <div class="cinfo-item">
+                        <p class="cinfo-label">Email Address</p>
+                        <p class="cinfo-value"><a href="mailto:joangueffroy@gmail.com">joangueffroy@gmail.com</a></p>
+                    </div>
+                    <div class="cinfo-item">
+                        <p class="cinfo-label">Phone Number</p>
+                        <p class="cinfo-value"><a href="tel:+5522920148407">+55 22 9201-48407</a></p>
+                    </div>
+                    <div class="cinfo-item">
+                        <p class="cinfo-label">Address</p>
+                        <p class="cinfo-value">R. Honorio Luiz Francisco, 178 - Centro<br>Butiá, 96750-000, BR</p>
+                    </div>
+                    <div class="cinfo-item">
+                        <p class="cinfo-label">Preferred Working Mode</p>
+                        <p class="cinfo-value">Remote or on-site — Butiá, Brazil and internationally</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div
+                    class="map-box"
+                    onclick="window.open('https://www.google.com/maps/search/?api=1&query=R.+Honorio+Luiz+Francisco,+178,+Centro,+Butia,+96750-000,+Brazil', '_blank')"
+                    title="Click to open in Google Maps"
+                >
+                    <iframe
+                        src="https://maps.google.com/maps?q=R.+Honorio+Luiz+Francisco,+178,+Centro,+Butia,+96750-000,+Brazil&output=embed"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allowfullscreen>
+                    </iframe>
+                    <div class="map-click-layer"></div>
+                    <div class="map-pin-label">
+                        <strong>R. Honorio Luiz Francisco, 178</strong>
+                        <span>Centro, Butiá, 96750-000, BR &mdash; Click to open in Google Maps</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p class="footer-copy">&copy; 2026 Joan Gueffroy. All rights reserved.</p>
+    <ul class="footer-nav">
+        <li><a href="#home">Top</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="mailto:joangueffroy@gmail.com">Email</a></li>
+    </ul>
+</footer>
+
+<script>
+var nav = document.querySelector('nav');
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 10) {
+        nav.style.boxShadow = '0 4px 24px rgba(0,0,0,0.5)';
+    } else {
+        nav.style.boxShadow = 'none';
+    }
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+</script>
+
+</body>
+</html>
